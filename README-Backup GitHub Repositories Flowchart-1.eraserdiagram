@@ -1,0 +1,29 @@
+flowchart-diagram
+
+title Backup GitHub Repositories Flowchart
+
+// Define groups for better organization
+Setup [color: lightblue] {
+  Install Python Libraries [icon: package]
+  Clone Repository [icon: git-branch]
+  Create .env File [icon: file-text]
+}
+
+Script Execution [color: lightgreen] {
+  Run Script [icon: play-circle]
+  Fetch Repositories [icon: download]
+  Clone Repositories [icon: git-branch]
+  Create Zip Archive [icon: archive]
+}
+
+// Define the flow
+Start [shape: oval, icon: play] > Install Python Libraries: pip install requests python-dotenv
+Install Python Libraries > Clone Repository: git clone https://github.com/ronknight/backup-repos.git
+Clone Repository > Create .env File: Add GitHub credentials
+Create .env File > Run Script: python backup_repos.py
+
+Run Script > Fetch Repositories: Use GitHub API
+Fetch Repositories > Clone Repositories: Into repos folder
+Clone Repositories > Create Zip Archive: repositories_backup.zip
+Create Zip Archive > End [shape: oval, icon: check-circle]
+
