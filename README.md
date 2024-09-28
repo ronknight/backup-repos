@@ -47,18 +47,37 @@ git clone https://github.com/ronknight/backup-repos.git
 cd backup-repos
 ```
 
-2. Create a `.env` file in the same directory as the script with your GitHub credentials:
+2. Obtain a GitHub Personal Access Token:
+   - Go to https://github.com/settings/tokens?type=beta
+   - Click on "Generate new token"
+   - Give your token a name (e.g., "Backup Repos Script")
+   - Select the appropriate scopes:
+     - At minimum, select "public_repo" if you only want to backup public repositories
+     - Select "repo" for access to both private and public repositories
+   - Set an expiration date for your token (or choose "No expiration" if you prefer)
+   - Click "Generate token"
+   - Copy the generated token immediately (you won't be able to see it again)
+
+3. Create a `.env` file in the same directory as the script with your GitHub credentials:
 ```
 GITHUB_ACCESS_TOKEN=your_github_access_token
 GITHUB_USERNAME=your_github_username
 ```
+   Replace `your_github_access_token` with the token you just generated, and `your_github_username` with your GitHub username.
 
-3. Run the script:
+4. Install the required Python libraries:
+```
+pip install requests python-dotenv
+```
+
+5. Run the script:
 ```
 python backup_repos.py
 ```
 
 The script will clone all your GitHub repositories into a `repos` folder and create a zip archive named `repositories_backup.zip`.
+
+**Note:** Keep your access token secure and never share it publicly. If you suspect your token has been compromised, immediately delete it from your GitHub account and generate a new one.
 
 ## 📜 Script
 
